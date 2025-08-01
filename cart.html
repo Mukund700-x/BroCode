@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Cart</title>
+    <style>
+        #head {
+            background-color: rgb(156, 82, 82);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+        #logo {
+            height: 8vw;
+            max-height: 80px;    
+            min-height: 40px;    
+            width: auto;
+        }
+        #body-for-items{
+            height: max-content + 10px;
+            width: 95vw;
+            display: flex;
+            position: relative;
+            padding: 10px;
+            box-shadow: 0px 7px 50px rgb(156, 82, 82);
+            border: 2px solid black;
+            background-color: rgb(211, 154, 144);
+            justify-content: space-between;
+            border-radius: 18px;
+        }
+
+        .cost-details{
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            width: 35%;
+            height: max-content;
+            margin-left: auto;
+            border-radius: 20px;
+            box-shadow: 0px 7px 50px rgb(156, 82, 82);
+            background-color: rgb(196, 107, 91);
+
+        }
+        #shipping-address {
+            width: 97%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            box-shadow: 0px 7px 50px rgb(156, 82, 82);
+            background-color: rgb(196, 107, 91);
+        }
+    </style>
+</head>
+<body>
+    <header id="head">
+        <a href="amazon.html">
+             <img id="logo" src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo.png" alt="Amazon Logo">
+        </a>
+    </header>
+    <div id="shipping-address">
+            <h2>Shipping Address</h2>
+            <p>Name: John Doe</p>
+            <p>Address: Gokuldharm Colony, Mumbai, India</p>
+        </div>
+    <div id="body-for-items">
+
+        <div class="cost-details">
+            <h2>Cost Details</h2>
+            <p>Items in Cart: <span id="itemsincart">0</span></p>
+            <p>Total Cost: <span id="totalcost">0</span></p>
+        </div>
+        
+    </div>
+
+    <script>
+        const data = document.getElementsByClassName('product-box').namedItem('product1');
+        console.log(data);
+    </script>
+</body>
+</html>
