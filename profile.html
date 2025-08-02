@@ -1,209 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>profile page</title>
-    <style>
-      body{
-        margin: 0;
-        padding: 0;
-        font family: 'Comic Sans MS','Chalkboard SE',cursive,sans-serif;
-        background: #181818;
-        color: #fff;
-      }
-      .container{
-        background: transparent;
-        border: 2px solid #fff;
-        border-radius: 22px;
-        width: 700px;
-        margin: 50px auto;
-        padding: 35px 30px 50px 40px;
-        box-sizing: border-box;
-        position: relative;
-        min-height: 470px;
-      }
-      .top-bar{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        margin-bottom: 25px;
-        gap: 16px;
-      }
-      .top-bar .dashboard-btn{
-        border: 2px solid #fff;
-        font-size: 19px;
-        border-radius: 12px;
-        padding: 9px 34px;
-        cursor: pointer;
-        font-family: inherit;
-        font-weight: bold;
-      }
-      .profile-title{
-        font-size: 2em;
-        font-weight: bold;
-        font-family: inherit;
-        margin-bottom: 16px;
-        letter-spacing: 1px;
-      }
-      .badge{
-        display: inline-block;
-        background: #36419b;
-        color: #fff;
-        font-size: 1em;
-        padding: 2px 16px;
-        margin-bottom: 18px;
-        border-radius: 8px;
-        margin-left: 26px;
-      }
-      .profile-content{
-        display: flex;
-        gap: 48px;
-        align-items: flex-start;
-        margin-top: 14px;
-      }
-      .profile-fields{
-        flex: 1;
-      }
-      .profile-fields label{
-        font-size: 1.2em;
-        display: inline-block;
-        width: 155px;
-        margin-bottom: 7px;
-        font-family: inherit;
-        letter-spacing: 1px;
-      }
-      .profile-fields input[type="text"]{
-        font-size: 19px;
-        background: transparent;
-        border: none;
-        border-bottom: 2px solid #fff;
-        color: #fff;
-        padding: 4px 0 3px 14px;
-        width; 210px;
-        outline: none;
-      }
-       .profile-fields.row{
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-      .profile-fields .upgrade-btn{
-        margin-left: 18px;
-        background: #0c880c;
-        color: #fff;
-        border: 2px solid #00ff66;
-        border-radius: 9px;
-        font-size: 1em;
-        padding: 6px 22px;
-        font-family: inherit;
-        cursor: pointer;
-        trasition: background 0.2s;
-      }
-      .profile-fields .upgrade-btn:hover{
-        background: #00ff66;
-        color: #181818;
-      }
-      .profile-fields select{
-        font-size: 19px;
-        background: #fff;
-        border: 2px solid #fff;
-        border-radius: 8px;
-        padding: 5px 18px;
-        margin-left: 12px;
-        font-family: inherit;
-        outline:  none;
-        cursor: pointer:
-        margin-bottom: 10px;
-      }
-      .dropdown-caret{
-        margin-left: 8px;
-        font-size: 1.15em
-        vertical-align: middle;
-      }
-      .profile-image-box{
-        min-width: 140px;
-        min-height: 140px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .profile-image-bo x .profile-img-circle{
-        width: 133px;
-        height: 133px;
-        background: #25476a;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center:
-        color: #fff;
-        font-size: 1.2em;
-        font-family: inherit;
-        border: 2px solid #fff;
-      }
-      .container::after{
-        content: ";
-        display: block;
-        position: absolute;
-        left: 26%;
-        bottom: 125px;
-        width: 40%;
-        height: 4px;
-        border-bottom: 2px dashed #fff;
-        opacity: 0.28;
-      }
-      </style>
-  </head>
-  <body>
-    <div class= "container">
-      <div class="top-bar">
-        <button class="dashboard-btn">Dashboard</button>
-        <button class="admin-btn">Admin</button>
-      </div>
-      <div class="profile-title">
-        profile
-        <span class="badge">the developers</span>
-      </div>
-      <div class="profile-content">
-        <div class="profile-fields">
-          <div class="row">
-            <label for="name">Name:</label>
-            <input type="text" id="name"placeholder="________________"/>
-          </div>
-          <div class="row">
-            <label for="role">Role:</label>
-            <input type="text"id="role"placeholder="_________________"/>
-            <button class="upgrade-btn">upgrade</button>
-          </div>
-          <div class="row">
-            <label for="category">category in interest</label>
-              <input type="text"id="category"placeholder="_______________"/>
-            </div>
-              <div class="row">
-                <label for="language">chabge language:</label>label>
-                <select id ="languuage">
-                  <option>English</option>
-                  <option>Hindi</option>
-                  <option>Spanish</option>
-                </select>
-              </div>
-            </div>
-        <div class="profile-image-box">
-          <div class ="profile-img-circle">profile<br>image</div>
+<head>
+  <meta charset="UTF-8">
+  <title>Profile Page</title>
+  <style>
+    body {
+      background: #000000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      font-family:sans-serif;
+    }
+    .profile-container {
+      margin: 44px auto;
+      background: rgba(7, 57, 107, 0.98);
+      border: 2px solid #fff;
+      border-radius: 26px;
+      width: 820px;
+      min-height: 450px;
+      box-shadow: 0 3px 27px #000a;
+      padding-bottom: 34px;
+      position: relative;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      border-bottom: 2px solid #fff;
+      padding: 16px 28px 4px 0;
+      border-top-right-radius: 23px;
+      border-top-left-radius: 23px;
+    }
+    .top-btn {
+      margin-left: 20px;
+      font-size: 20px;
+      border: 2px solid #fff;
+      background:#7b4ac1;
+      color: #fff;
+      border-radius: 17px;
+      padding: 7px 26px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .15s;
+    }
+    .top-btn.admin {
+      background: #7b4ac1;
+      font-weight: bold;
+      border-radius: 25px;
+      color: #e0dcdc;
+    }
+    .profile-title {
+      font-size: 2.2rem;
+      margin-top: 28px;
+      margin-left: 38px;
+      margin-bottom: 0;
+      font-family: inherit;
+      letter-spacing: 0.5px;
+    }
+    .badge {
+      display: inline-block;
+      background: #36419b;
+      padding: 3px 15px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: normal;
+      margin-top: 7px;
+      margin-left: 15px;
+      vertical-align: middle;
+      margin-bottom: 30px;
+    }
+    .profile-main {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 20px 42px 0 44px;
+      gap: 30px;
+      align-items: flex-start;
+    }
+    .profile-form {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .profile-form label {
+      font-size: 1.18em;
+      font-family: inherit;
+      margin-bottom: 2px;
+      min-width: 130px;
+      display: inline-block;
+    }
+    .profile-input-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 7px;
+    }
+    .profile-form input[type="text"] {
+      background: transparent;
+      color: #fff;
+      font-size: 18px;
+      border: none;
+      border-bottom: 2px solid #fff;
+      outline: none;
+      margin-left: 8px;
+      width: 210px;
+      font-family: inherit;
+      letter-spacing: 1px;
+      padding: 3px 5px;
+    }
+    .upgrade-btn {
+      margin-left: 18px;
+      background: #178e26;
+      color: #fff;
+      font-family: inherit;
+      border: 2px solid #00ff66;
+      border-radius: 8px;
+      font-size: 1.08em;
+      padding: 7px 28px;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 3px 14px #07651c44;
+    }
+    .upgrade-btn:hover {
+      background: #00ff66;
+      color: #151515;
+    }
+    .profile-form select {
+      font-size: 1em;
+      background: #1a202b;
+      border: 2px solid #fff;
+      color: #fff;
+      border-radius: 7px;
+      padding: 2px 15px;
+      font-family: inherit;
+      margin-left: 10px;
+      margin-top: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    .profile-image {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    .profile-img-circle {
+      width: 150px;
+      height: 150px;
+      background: #264d72;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1.28em;
+      position: relative;
+      border: 2.5px solid #fff;
+      letter-spacing: 0.5px;
+      text-align: center;
+      box-shadow: 0 2px 11px #123c5844;
+      user-select: none;
+    }
+    @media (max-width: 950px) {
+      .profile-container { width: 95vw; min-width: 300px; }
+      .profile-main { flex-direction: column; align-items: flex-start; gap: 20px;}
+      .profile-image { margin-top: 25px; justify-content: flex-start; }
+    }
+    @media (max-width: 650px) {
+      .profile-main { padding-left: 15px; padding-right: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="top-bar">
+      <button class="top-btn">DashBoard</button>
+      <button class="top-btn admin">Admin</button>
+    </div>
+    <div class="profile-title">
+      Profile
+    </div>
+    <div class="profile-main">
+      <form class="profile-form" autocomplete="off">
+        <div class="profile-input-row">
+          <label for="name">Name:</label>
+          <input type="text" id="name" />
+        </div>
+        <div class="profile-input-row">
+          <label for="role">Role:</label>
+          <select id="language">
+            <option>End User</option>
+            <option>Support Agent </option>
+            <option>Admin</option>
+          </select>
+        </div>
+        <div class="profile-input-row">
+          <label for="category">Category In interest</label>
+          <input type="text" id="category" />
+        </div>
+        <div class="profile-input-row">
+          <label for="language">Change Language:</label>
+          <select id="language">
+            <option>English</option>
+            <option>Hindi</option>
+            <option>French</option>
+          </select>
+        </div>
+      </form>
+      <div class="profile-image">
+        <div class="profile-img-circle">
+          Profile<br>Image
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>
-                  
-
-          
-          
-  </body>
-        
-      
-        
-      
-      
-        
-    </style>
-  </head>
