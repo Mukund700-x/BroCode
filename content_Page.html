@@ -105,24 +105,70 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         color: #222;
     }
     
-    .forum-listing{
-        margin: 42px auto 0 auto;
-        max-width: 900;
-        min-height: 340px;
+    .forum-listing {
+      margin: 42px auto 0 auto;
+      max-width: 900px;
+      min-height: 340px;
     }
-    .question-card{
-        background-color: #414345;
-        margin-bottom: 18px;
-        border-radius: 17px;
-        box-shadow: 0 1px 10px #000b;
-        padding: 1.5em;
-        display: flex;
-        align-items: flex-start;
-        border: 2px solid #303030;
-        position: relative;
+    .question-card {
+      background: #eeeef1;
+      margin-bottom: 18px;
+      border-radius: 17px;
+      box-shadow: 0 1px 10px rgba(146, 143, 143, 0.733);
+      padding: 1.5em;
+      display: flex;
+      align-items: flex-start;
+      border: 2px solid #5b5b5c;
+      position: relative;
+    }
+    .question-card .votes {
+      min-width: 55px;
+      text-align: center;
+      font-size: 18px;
+      margin-right: 23px;
+      background: #666668;
+      border-radius: 6px;
+      padding: 6px;
+      color: #d6d6db;
+      border: 2px solid #888585;
     }
     .question-card .q-tags {
       margin-bottom: 7px;
+    }
+    .question-card .q-tag {
+      display: inline-block;
+      font-size: 0.95em;
+      background: #01325f;
+      color: #00a2ff;
+      border-radius: 13px;
+      padding: 2px 13px;
+      margin-right: 7px;
+      margin-bottom: 3px;
+      border: 1px solid #006eff;
+      font-family: inherit;
+    }
+    .question-card .q-title {
+      font-size: 1.32em;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #111111;
+    }
+    .question-card .q-status {
+      position: absolute;
+      top: 19px;
+      right: 24px;
+      background: orange;
+      color: #161616;
+      padding: 2px 18px;
+      border-radius: 17px;
+      font-size: 1.1em;
+      border: 2px solid #f4cc6a;
+      font-weight: bold;
+    }
+    .question-card .q-meta {
+      color: #8abbe9;
+      font-size: 1.08em;
+      margin-top: 3px;
     }
 
     </style>
@@ -174,7 +220,7 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         <div>
             <div class="q-tags">
             <span class="q-tag">Mechanical</span>
-            <span class="q-tag" style="background:#269c1d;color:#fff;">Robotics</span>
+            <span class="q-tag" style="background:#1d589c;color:#fff;">Robotics</span>
             </div>
             <div class="q-title">thi si good. i learned.</div>
             <div class="q-meta">Posted by prakhar</div>
@@ -183,15 +229,17 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         </div>
 
         <div class="question-card">
-        <div class="votes">2</div>
-        <div>
-            <div class="q-tags">
-            <span class="q-tag">Mechanical</span>
-            <span class="q-tag" style="background:#269c1d;color:#fff;">AI</span>
-            </div>
-            <div>this is the first ppost</div>
-            <div>Posted by odoo IN pvt. ltd.</div>
+      <div class="votes">21</div>
+      <div>
+        <div class="q-tags">
+          <span class="q-tag">Technical</span>
+          <span class="q-tag" style="background:#269c1d;color:#fff;">AI</span>
         </div>
+        <div class="q-title">this is the first ppost</div>
+        <div class="q-meta">Posted by nikhil</div>
+      </div>
+      <div class="q-status">Open</div>
+    </div>
     </div>
 
 
