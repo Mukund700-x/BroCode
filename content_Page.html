@@ -105,6 +105,25 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         color: #222;
     }
     
+    .forum-listing{
+        margin: 42px auto 0 auto;
+        max-width: 900;
+        min-height: 340px;
+    }
+    .question-card{
+        background-color: #414345;
+        margin-bottom: 18px;
+        border-radius: 17px;
+        box-shadow: 0 1px 10px #000b;
+        padding: 1.5em;
+        display: flex;
+        align-items: flex-start;
+        border: 2px solid #303030;
+        position: relative;
+    }
+    .question-card .q-tags {
+      margin-bottom: 7px;
+    }
 
     </style>
 </head>
@@ -122,8 +141,9 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         <label><input type="checkbox">Show open only</label>
         <select>
             <option>categories</option>
-            <option>Technical</option>
+            <option>Mechanical</option>
             <option>General</option>
+            <option>Robotics</option>
         </select>
         <select>
             <option>Status</option>
@@ -147,16 +167,35 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         <button class="ask-btn">Ask</button>
     </div>
 
-    <div>
+   <div class="forum-listing">
+
+        <div class="question-card">
+        <div class="votes">2</div>
         <div>
-            <div>
-            <span>Mechanical</span>
-            <span style="background:#269c1d;color:#fff;">Robotics</span>
+            <div class="q-tags">
+            <span class="q-tag">Mechanical</span>
+            <span class="q-tag" style="background:#269c1d;color:#fff;">Robotics</span>
             </div>
-            <div>Is it good things to use AI for hackathon?</div>
-            <div>Posted by odoo IN pvt. ltd.</div>
+            <div class="q-title">thi si good. i learned.</div>
+            <div class="q-meta">Posted by prakhar</div>
+        </div>
+        <div class="q-status">Open</div>
+        </div>
+
+        <div class="question-card">
+        <div class="votes">2</div>
+        <div>
+            <div class="q-tags">
+            <span class="q-tag">Mechanical</span>
+            <span class="q-tag" style="background:#269c1d;color:#fff;">AI</span>
+            </div>
+            <div class="q-title">Robotics is more cool.</div>
+            <div class="q-meta">Posted by Pratham.</div>
+        </div>
+        <div class="q-status">Open</div>
         </div>
     </div>
+
 
 </body>
 </html>
