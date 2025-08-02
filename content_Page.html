@@ -222,7 +222,7 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         <span id="user-info" style="margin-left: 1px; font-size: 1.2rem; font-weight: normal;"></span>
       </div>
         <div>
-        <button class="notif">Notify</button>
+        <button class="notif">Notify (<span id="notif-count">0</span>)</button>
         <button class="dashboard-btn">DashBoard</button>
         <button class="admin-btn">Admin</button>
         </div>
@@ -325,6 +325,22 @@ function getQuestions() {
 }
 function setQuestions(questions) {
   localStorage.setItem('questions', JSON.stringify(questions));
+}
+updateNotifyCount();
+
+function updateNotifyCount() {
+    const questions = getQuestions();
+    const storedCount = parseInt(localStorage.getItem('notifCount')) || 0;
+    const currentCount = questions.length;
+
+    const notifyEl = document.getElementById('notif-count');
+
+    // If more questions than before, update localStorage
+    if (currentCount > storedCount) {
+        notifyEl.textContent = currentCount - storedCount;
+    } else {
+        notifyEl.textContent = 0;
+    }
 }
 
 function renderQuestions() {
@@ -458,8 +474,17 @@ window.addEventListener('DOMContentLoaded', () => {
   const role = localStorage.getItem('profileRole') || '';
   const userInfo = document.getElementById('user-info');
 
+  updateNotifyCount();
   userInfo.textContent = `(${role}) ${name}`;
+
 });
+
+document.querySelector('.notif').onclick = function () {
+    const questions = getQuestions();
+    localStorage.setItem('notifCount', questions.length); // Save current question count
+    updateNotifyCount(); // Reset count to 0
+    alert('No new notifications.');
+};
 
 </script>        
 </body>
