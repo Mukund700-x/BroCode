@@ -414,26 +414,6 @@ document.querySelector('.ask-btn').onclick = function() {
   window.location.href = 'ask.html';
 };
 
-document.querySelector('.ask-btn').onclick = function() {
-  const question = prompt('Enter your question:');
-  if (!question) return;
-
-  const description = prompt('Enter a description (optional):');
-  const tags = prompt('Enter tags (comma separated):');
-
-  let questions = getQuestions();
-  questions.unshift({
-    id: Date.now() + Math.random(), // Unique ID
-    question,
-    description,
-    tags,
-    user: 'You',
-    votes: 0,
-    status: 'Open'
-  });
-  setQuestions(questions);
-  renderQuestions();
-};
 </script>        
 </body>
 </html>
