@@ -2,8 +2,59 @@
 <html lang="en">
 <head>
     <title>Review_Page</title>
+    <style>
+        body {
+background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+        .main-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #8d8dec;
+      padding: 14px 32px;
+      border-bottom: 2px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .main-navbar .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+    .main-navbar .dashboard-btn,
+    .main-navbar .admin-btn {
+      background: #442f37;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 22px;
+      padding: 7px 22px;
+      font-size: 1.1rem;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+    .main-navbar .notif {
+      background: #c0f3f0;
+      padding: 6px 13px;
+      border-radius: 50px;
+      margin-right: 18px;
+      font-size: 19px;
+      border: none;
+    }
+    </style>
 </head>
 <body>
-    
+    <div class="main-navbar">
+        <h2 class="logo">TalkAbout</h2>
+        <div>
+        <button class="notif">Notify</button>
+        <button class="dashboard-btn">DashBoard</button>
+        <button class="admin-btn">Admin</button>
+        </div>
+    </div>
 </body>
 </html>
