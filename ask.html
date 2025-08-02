@@ -156,13 +156,41 @@
     </form>
   </div>
   <script>
-    document.querySelector('.dashboard-btn').onclick = function() {
-      window.location.href = 'content_Page.html';
-    };
-    document.querySelector('.login-btn').onclick = function() {
-      window.location.href = 'content_Page.html';
-    };
+document.querySelector('.dashboard-btn').onclick = function() {
+  window.location.href = 'content_Page.html';
+};
+document.querySelector('.login-btn').onclick = function() {
+  window.location.href = 'content_Page.html';
+};
+
+
+document.querySelector('.ask-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const question = document.getElementById('question').value.trim();
+  const description = document.getElementById('description').value.trim();
+  const tags = document.getElementById('tags').value.trim();
+
+
+  let questions = JSON.parse(localStorage.getItem('questions')) || [];
+
+ 
+  questions.unshift({
+    question,
+    description,
+    tags,
+    user: 'You', 
+    votes: 0,
+    status: 'Open'
+  });
+
+ 
+  localStorage.setItem('questions', JSON.stringify(questions));
+
+
+  window.location.href = 'content_Page.html';
+});
   </script>
 </body>
 </html>
+
 
