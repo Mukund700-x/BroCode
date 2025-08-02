@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question Details</title>
+  <style>
+    body {
+      background: #181818;
+      color: #fff;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 760px;
+      margin: 64px auto;
+      background: #222226;
+      border-radius: 24px;
+      border: 2.2px solid #fff;
+      box-shadow: 0 6px 40px #000c;
+      padding: 36px 34px 42px 34px;
+      min-height: 320px;
+      position: relative;
+    }
+    .top-nav {
+      position: absolute;
+      top: 22px;
+      right: 34px;
+      display: flex;
+      gap: 16px;
+      z-index: 2;
+    }
+    .dashboard-btn {
+      background: rgb(8, 31, 69);
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 12px;
+      font-size: 18px;
+      padding: 7px 22px;
+      font-family: inherit;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .login-btn {
+      background: rgb(8, 31, 69);
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 22px;
+      font-size: 18px;
+      padding: 7px 28px;
+      font-family: inherit;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+    }
+    .question-title {
+      font-size: 1.36em;
+      font-weight: bold;
+      margin-top: 9px;
+      margin-bottom: 3px;
+      color: #e5f8cc;
+      letter-spacing: 0.5px;
+    }
+    .question-tag {
+      display: inline-block;
+      background: #279edb;
+      color: #fff;
+      border-radius: 9px;
+      padding: 2px 17px;
+      font-size: 1em;
+      margin-bottom: 14px;
+      font-family: inherit;
+      font-weight: bold;
+      letter-spacing: 0.4px;
+      margin-left: 2px;
+    }
+    .author-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 1.01em;
+      margin-bottom: 5px;
+    }
+    .author-avatar {
+      width: 30px;
+      height: 30px;
+      background: #6e77b8;
+      color: #fff;
+      font-size: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    .author-name {
+      font-weight: bold;
+      letter-spacing: 0.4px;
+    }
+    .desc {
+      margin: 7px 0 17px 0;
+      color: #d9eafc;
+      font-size: 1.1em;
+      line-height: 1.38em;
+      padding-left: 3px;
+    }
+    .answers-panel {
+      background: #daf1f7;
+      color: #294c62;
+      border-radius: 11px;
+      border: none;
+      margin: 13px 0 10px 0;
+      padding: 22px 18px 16px 18px;
+      font-family: inherit;
+      font-size: 1.09em;
+      box-shadow: 0 2px 8px #203a4070;
+    }
+    .reply-btn {
+      background: #faf6ff;
+      color: #502483;
+      border: 2px solid #e3d1ff;
+      border-radius: 8px;
+      padding: 8px 26px;
+      font-family: inherit;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-left: 2px;
+      transition: background 0.15s;
+      box-shadow: 0 1px 8px #c6a2ef2b;
+    }
+    .reply-btn:hover {
+      background: #d8cafa;
+      color: #2b1a47;
+    }
+    @media (max-width: 620px) {
+      .container { max-width: 98vw; padding: 9vw 3vw; }
+      .top-nav { position: static; flex-direction: row; justify-content: flex-end; margin-bottom: 16px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-nav">
+      <button class="dashboard-btn">DashBoard</button>
+      <button class="login-btn">login</button>
+    </div>
+    <div style="padding-top:40px;">
+      <div class="question-title">
+        Is it good things to use AI for hackathon?
+      </div>
+      <span class="question-tag">Development</span>
+      <div class="author-row" style="margin-top:12px;">
+        <span class="author-avatar">M</span>
+        <span class="author-name">Mitchell Admin</span>
+        <span style="color: #99e382; font-size: 0.98em;">• 1 second ago</span>
+      </div>
+      <div class="desc">
+        I am participating in odoo IN hackathon - 2025
+      </div>
+
+      <div class="answers-panel">
+        There are no answers yet<br>
+        Be the first to answer this question
+        <div>
+          <button class="reply-btn">Reply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
