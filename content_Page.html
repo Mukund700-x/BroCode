@@ -303,7 +303,31 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
               window.location.href = 'ask.html';
             };
 
-            
+            window.addEventListener('DOMContentLoaded', function() {
+              const qData = localStorage.getItem('newQuestion');
+              if (qData) {
+                const q = JSON.parse(qData);
+               
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                  <div class="votes">${q.votes}</div>
+                  <div>
+                    <div class="q-tags">
+                      ${q.tags.split(',').map(tag => `<span class="q-tag">${tag.trim()}</span>`).join('')}
+                    </div>
+                    <div class="q-title">${q.question}</div>
+                    <div class="q-meta">Posted by ${q.user}</div>
+                    <div style="margin-top:8px;color:#222;">${q.description}</div>
+                  </div>
+                  <div class="q-status">${q.status}</div>
+                `;
+                
+                document.querySelector('.forum-listing').prepend(card);
+                
+                localStorage.removeItem('newQuestion');
+              }
+            });
         </script>
         
 </body>
