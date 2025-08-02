@@ -119,43 +119,95 @@
         cursor: pointer:
         margin-bottom: 10px;
       }
-      .top-bar .admin-btn{
-        border: 2px solid #fff;
-        background: #522;
-        color: #fff;
-        font-size: 19px;
-        border-radius: 22px;
-        padding: 9px 34px;
-        cursor: poninter;
-        font-family: inherit;
-        font-weight: bold;
+      .dropdown-caret{
+        margin-left: 8px;
+        font-size: 1.15em
+        vertical-align: middle;
       }
-      /*profile title*/
-      .profile-title{
-        font-size: 2em;
-        fomnt-weight: bold;
-        font-family: inherit:
-        margin-bottom: 16px;
-        letter-spacing: 1px;
-      }
-      /*Developer badge*/
-      .badge{
-        display: inline-block;
-        background: #36419b;
-        color: #fff;
-        font-size: 1em;
-        padding: 2px 16px;
-        margin-bottom: 18px;
-        border-radius: 8px;
-        margin-left: 26px;
-      }
-      /*profile layout*/
-      .profile-content{
+      /*profile image*/
+      .profile-image-box{
+        min-width: 140px;
+        min-height: 140px;
         display: flex;
-        gap: 48px;
-        align-items: flex-start;
-        margin-top: 14px;
+        align-items: center;
+        justify-content: center;
       }
+      .profile-image-bo x .profile-img-circle{
+        width: 133px;
+        height: 133px;
+        background: #25476a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center:
+        color: #fff;
+        font-size: 1.2em;
+        font-family: inherit;
+        border: 2px solid #fff;
+      }
+      /*handwritten style line*/
+      .container::after{
+        content: ";
+        display: block;
+        position: absolute;
+        left: 26%;
+        bottom: 125px;
+        width: 40%;
+        height: 4px;
+        border-bottom: 2px dashed #fff;
+        opacity: 0.28;
+      }
+      </style>
+  </head>
+  <body>
+    <div class= "container">
+      <div class="top-bar">
+        <button class="dashboard-btn">Dashboard</button>
+        <button class="admin-btn">Admin</button>
+      </div>
+      <div class="profile-title">
+        profile
+        <span class="badge">the developers</span>
+      </div>
+      <div class="profile-content">
+        <div class="profile-fields">
+          <div class="row">
+            <label for="name">Name:</label>
+            <input type="text" id="name"placeholder="________________"/>
+          </div>
+          <div class="row">
+            <label for="role">Role:</label>
+            <input type="text"id="role"placeholder="_________________"/>
+            <button class="upgrade-btn">upgrade</button>
+          </div>
+          <div class="row">
+            <label for="category">category in interest</label>
+              <input type="text"id="category"placeholder="_______________"/>
+            </div>
+              <div class="row">
+                <label for="language">chabge language:</label>label>
+                <select id ="languuage">
+                  <option>English</option>
+                  <option>Hindi</option>
+                  <option>Spanish</option>
+                </select>
+              </div>
+            </div>
+        <div class="profile-image-box">
+          <div class ="profile-img-circle">profile<br>image</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+                  
+
+          
+          
+  </body>
+        
+      
+        
       
       
         
