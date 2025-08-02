@@ -196,6 +196,23 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
       pointer-events: none;
     }
 
+    .remove-all-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .remove-all-btn:hover {
+      background-color: #c9302c;
+    }
+
     </style>
 </head>
 <body>
@@ -290,6 +307,7 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         <a href="#">11</a>
     </div>
 
+    <button class="remove-all-btn">Remove All Questions</button>
 <script>
 function getQuestions() {
   return JSON.parse(localStorage.getItem('questions')) || [];
@@ -412,6 +430,14 @@ document.querySelector('.notif').onclick = function() {
 };
 document.querySelector('.ask-btn').onclick = function() {
   window.location.href = 'ask.html';
+};
+
+document.querySelector('.remove-all-btn').onclick = function() {
+    if (confirm('Are you sure you want to remove all questions? This action cannot be undone.')) {
+        localStorage.removeItem('questions');
+        localStorage.removeItem('votedQuestions');
+        renderQuestions();
+    }
 };
 
 </script>        
