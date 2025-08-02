@@ -222,11 +222,12 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
             <option>Closed</option>
         </select>
         <div class="sort-group">
+            <label>sort by:</label>
             <label>
-                <input class="sort-radios" type="radio" checked> Most Comment
+                <input class="sort-radios" type="radio" name="sort" checked> Most Comment
             </label>
             <label>
-                <input class="sort-radios" type="radio">
+                <input class="sort-radios" name="sort" type="radio">
                 Most vote
             </label>
         </div>
@@ -238,7 +239,7 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         <button class="ask-btn">Ask</button>
     </div>
 
-   <div class="forum-listing">
+    <div class="forum-listing">
 
         <div class="question-card">
         <div class="votes">1</div>
