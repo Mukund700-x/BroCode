@@ -309,7 +309,7 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
     <button class="remove-all-btn">Remove All Questions</button>
 <script>
 function getQuestions() {
-  return JSON.parse(localStorage.getItem('questions')) || [];
+  let questions = JSON.parse(localStorage.getItem('questions')) || [];
    questions = questions.map((q, index) => {
         if (!q.id) {
             q.id = Date.now() + '-' + index;
@@ -373,9 +373,9 @@ function renderQuestions() {
                 <div class="q-meta">Posted by ${q.user}</div>
                 <div style="margin-top:8px;color:#222;">${q.description}</div>
             </div>
-            <div class="q-status" onclick="window.location.href='que.html?id=${q.id}'" style="cursor:pointer;">
-                ${q.status}
-            </div>
+            <div class="q-status">
+    <button onclick="window.location.href='que.html?id=${q.id}'" style="cursor:pointer; padding:6px 14px; background:orange; border:none; border-radius:12px; font-weight:bold;">Open</button>
+</div>
         `;
         forum.appendChild(card);
     });
