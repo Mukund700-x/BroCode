@@ -228,6 +228,16 @@
       document.querySelector('.admin').onclick = function() {
         alert('Admin section coming soon!');
       };
+
+      document.querySelectorAll('#name, #language').forEach(input => {
+  input.addEventListener('change', () => {
+    const name = document.getElementById('name').value.trim();
+    const role = document.getElementById('language').value;
+
+    localStorage.setItem('profileName', name);
+    localStorage.setItem('profileRole', role);
+  });
+});
   </script>
   
 </body>
