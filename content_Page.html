@@ -274,8 +274,10 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
             <span class="q-tag">Mechnical</span>
             <span class="q-tag" style="background:#1d589c;color:#fff;">AI</span>
             </div>
-            <div>AI is more usable .</div>
-            <div>Posted by Narander</div>
+            <div class="q-title">AI is more usable .</div>
+            <div class="q-meta">Posted by Narander</div>
+        </div>
+        <div class="q-status">Open</div>
         </div>
     </div>
 
@@ -288,56 +290,56 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         <a href="#">11</a>
     </div>
 
-        <script>
-            document.querySelector('.dashboard-btn').onclick = function() {
-              window.location.href = 'profile.html';
-            };
-            document.querySelector('.admin-btn').onclick = function() {
-              alert('Admin section coming soon!');
-            };
-            document.querySelector('.notif').onclick = function() {
-              alert('No new notifications.');
-            };
+<script>
+function getQuestions() {
+  return JSON.parse(localStorage.getItem('questions')) || [];
+}
+function setQuestions(questions) {
+  localStorage.setItem('questions', JSON.stringify(questions));
+}
 
-            document.querySelector('.ask-btn').onclick = function() {
-              window.location.href = 'ask.html';
-            };
-
-            window.addEventListener('DOMContentLoaded', function() {
-  const qData = localStorage.getItem('newQuestion');
-  if (qData) {
-    const q = JSON.parse(qData);
-    // Create question card
-    const card = document.createElement('div');
-    card.className = 'question-card';
-    card.innerHTML = `
-      <div class="votes">${q.votes}</div>
-      <div>
-        <div class="q-tags">
-          ${q.tags.split(',').map(tag => `<span class="q-tag">${tag.trim()}</span>`).join('')}
-        </div>
-        <div class="q-title">${q.question}</div>
-        <div class="q-meta">Posted by ${q.user}</div>
-        <div style="margin-top:8px;color:#222;">${q.description}</div>
-      </div>
-      <div class="q-status">${q.status}</div>
-    `;
-    // Insert at the top of forum-listing
-    document.querySelector('.forum-listing').prepend(card);
-    // Remove from storage so it doesn't repeat
-    localStorage.removeItem('newQuestion');
-  }
-});
-
-// Show all questions from localStorage
-window.addEventListener('DOMContentLoaded', function() {
-  const questions = JSON.parse(localStorage.getItem('questions')) || [];
+function renderQuestions() {
   const forum = document.querySelector('.forum-listing');
-  questions.forEach(q => {
+  forum.innerHTML = '';
+  let questions = getQuestions();
+
+  const statusSelect = document.querySelector('.filter-panel select:nth-of-type(2)');
+  const statusValue = statusSelect.value;
+
+  const categorySelect = document.querySelector('.filter-panel select:nth-of-type(1)');
+  const categoryValue = categorySelect.value;
+
+  const openOnly = document.querySelector('.filter-panel input[type="checkbox"]').checked;
+  const searchText = document.querySelector('.search-bar input[type="text"]').value.trim().toLowerCase();
+  
+  let sortBy = 'comments';
+  document.querySelectorAll('.sort-radios').forEach(radio => {
+    if (radio.checked && radio.parentElement.textContent.includes('vote')) sortBy = 'votes';
+  });
+
+  questions = questions.filter(q => {
+    if (statusValue !== 'Status' && q.status !== statusValue) return false;
+    if (categoryValue !== 'categories' && !q.tags.toLowerCase().includes(categoryValue.toLowerCase())) return false;
+    if (openOnly && q.status !== 'Open') return false;
+
+    if (searchText) {
+      const haystack = (q.question + ' ' + q.description + ' ' + q.tags + ' ' + q.user).toLowerCase();
+      if (!haystack.includes(searchText)) return false;
+    }
+    return true;
+  });
+
+
+  if (sortBy === 'votes') {
+    questions.sort((a, b) => b.votes - a.votes);
+  }
+
+
+  questions.forEach((q, idx) => {
     const card = document.createElement('div');
     card.className = 'question-card';
     card.innerHTML = `
-      <div class="votes">${q.votes}</div>
+      <div class="votes" style="cursor:pointer;" data-idx="${idx}">${q.votes}</div>
       <div>
         <div class="q-tags">
           ${q.tags.split(',').map(tag => `<span class="q-tag">${tag.trim()}</span>`).join('')}
@@ -348,10 +350,90 @@ window.addEventListener('DOMContentLoaded', function() {
       </div>
       <div class="q-status">${q.status}</div>
     `;
-    forum.prepend(card);
+    forum.appendChild(card);
   });
+
+
+  forum.querySelectorAll('.votes').forEach(voteEl => {
+    voteEl.onclick = function() {
+      const idx = parseInt(this.getAttribute('data-idx'));
+      const filteredQuestions = questions;
+      const q = filteredQuestions[idx];
+      let allQuestions = getQuestions();
+
+      const origIdx = allQuestions.findIndex(qq =>
+        (qq.id && q.id && qq.id === q.id) ||
+        (qq.question === q.question && qq.description === q.description)
+      );
+
+
+      let voted = JSON.parse(localStorage.getItem('votedQuestions') || '[]');
+
+      const voteKey = q.id ? q.id : (q.question + '|' + q.description);
+      if (voted.includes(voteKey)) {
+        alert('You have already voted for this question.');
+        return;
+      }
+
+      allQuestions[origIdx].votes += 1;
+      setQuestions(allQuestions);
+
+
+      voted.push(voteKey);
+      localStorage.setItem('votedQuestions', JSON.stringify(voted));
+
+      renderQuestions();
+    };
+  });
+}
+
+
+document.querySelectorAll('.filter-panel select, .filter-panel input[type="checkbox"], .sort-radios').forEach(el => {
+  el.addEventListener('change', renderQuestions);
 });
-        </script>
-        
+document.querySelector('.search-bar input[type="text"]').addEventListener('input', renderQuestions);
+document.querySelector('.search-bar button').addEventListener('click', function(e) {
+  e.preventDefault();
+  renderQuestions();
+});
+
+
+window.addEventListener('DOMContentLoaded', renderQuestions);
+
+
+document.querySelector('.dashboard-btn').onclick = function() {
+  window.location.href = 'profile.html';
+};
+document.querySelector('.admin-btn').onclick = function() {
+  alert('Admin section coming soon!');
+};
+document.querySelector('.notif').onclick = function() {
+  alert('No new notifications.');
+};
+document.querySelector('.ask-btn').onclick = function() {
+  window.location.href = 'ask.html';
+};
+
+document.querySelector('.ask-btn').onclick = function() {
+  const question = prompt('Enter your question:');
+  if (!question) return;
+
+  const description = prompt('Enter a description (optional):');
+  const tags = prompt('Enter tags (comma separated):');
+
+  let questions = getQuestions();
+  questions.unshift({
+    id: Date.now() + Math.random(), // Unique ID
+    question,
+    description,
+    tags,
+    user: 'You',
+    votes: 0,
+    status: 'Open'
+  });
+  setQuestions(questions);
+  renderQuestions();
+};
+</script>        
 </body>
 </html>
