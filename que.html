@@ -171,5 +171,43 @@
       </div>
     </div>
   </div>
+  <script>
+    document.querySelector('.dashboard-btn').onclick = function() {
+        window.location.href = 'content_Page.html';
+    };
+    document.querySelector('.login-btn').onclick = function() {
+        window.location.href = 'content_Page.html';
+    };
+
+    // Function to get a URL parameter by name
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Function to load and render the question
+    function loadQuestionDetails() {
+        const questionId = getUrlParameter('id');
+        const questions = JSON.parse(localStorage.getItem('questions')) || [];
+        const question = questions.find(q => q.id === questionId);
+
+        if (question) {
+            document.querySelector('.question-title').textContent = question.question;
+            document.querySelector('.desc').textContent = question.description;
+            document.querySelector('.author-name').textContent = question.user;
+
+            const tagsContainer = document.querySelector('.question-tag');
+            tagsContainer.textContent = ''; // Clear existing content
+            tagsContainer.textContent = question.tags;
+        } else {
+            // Handle case where question is not found
+            document.querySelector('.container').innerHTML = '<h2>Question not found.</h2>';
+        }
+    }
+
+    window.onload = loadQuestionDetails;
+</script>
 </body>
 </html>

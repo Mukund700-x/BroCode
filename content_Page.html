@@ -310,6 +310,14 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
 <script>
 function getQuestions() {
   return JSON.parse(localStorage.getItem('questions')) || [];
+   questions = questions.map((q, index) => {
+        if (!q.id) {
+            q.id = Date.now() + '-' + index;
+        }
+        return q;
+    });
+    setQuestions(questions);
+    return questions;
 }
 function setQuestions(questions) {
   localStorage.setItem('questions', JSON.stringify(questions));
@@ -353,22 +361,24 @@ function renderQuestions() {
 
 
   questions.forEach((q, idx) => {
-    const card = document.createElement('div');
-    card.className = 'question-card';
-    card.innerHTML = `
-      <div class="votes" style="cursor:pointer;" data-idx="${idx}">${q.votes}</div>
-      <div>
-        <div class="q-tags">
-          ${q.tags.split(',').map(tag => `<span class="q-tag">${tag.trim()}</span>`).join('')}
-        </div>
-        <div class="q-title">${q.question}</div>
-        <div class="q-meta">Posted by ${q.user}</div>
-        <div style="margin-top:8px;color:#222;">${q.description}</div>
-      </div>
-      <div class="q-status">${q.status}</div>
-    `;
-    forum.appendChild(card);
-  });
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="votes" style="cursor:pointer;" data-idx="${idx}">${q.votes}</div>
+            <div>
+                <div class="q-tags">
+                    ${q.tags.split(',').map(tag => `<span class="q-tag">${tag.trim()}</span>`).join('')}
+                </div>
+                <div class="q-title">${q.question}</div>
+                <div class="q-meta">Posted by ${q.user}</div>
+                <div style="margin-top:8px;color:#222;">${q.description}</div>
+            </div>
+            <div class="q-status" onclick="window.location.href='que.html?id=${q.id}'" style="cursor:pointer;">
+                ${q.status}
+            </div>
+        `;
+        forum.appendChild(card);
+    });
 
 
   forum.querySelectorAll('.votes').forEach(voteEl => {
