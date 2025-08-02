@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login Page</title>
-    <style></style>
+  <meta charset="UTF-8" />
+  <title>User Login Page</title>
+  <style>
+  
+  </style>
 </head>
 <body>
-    <span class="page-name">User Login Page</span>
-    <div class="container">
-        <div class="nav">
-            <a href="#" class="home">Home</a>
-        </div>
-        <form>
-            <label for="username">User Name</label>
-            <input type="text" id=username" class="input-box" name="username" required/>
-            <label for="password">Password</label>
-            
-        </form>
-            
-            
-    
+  <span class="login-page">User Login page</span>
+  <div class="container">
+    <div class="nav">
+      <a href="#" class="home">Home</a>
+    </div>
+    <form id="loginForm" autocomplete="off">
+      <label for="username">User Name</label>
+      <input type="text" id="username" class="input-box" name="username" required/>
+      <label for="password">Password</label>
+      <input type="password" id="password" class="input-box" name="password" required/>
+      <div class="forgot">Forgot Password?</div>
+      <button type="submit" class="login-btn">Login</button>
+      <div id="errorMsg" class="error-message"></div>
+    </form>
+  </div>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      const errorMsg = document.getElementById('errorMsg');
+
+      if(user === 'use' && pass === 'pass'){
+        window.location.href = 'Content_Page.html';
+      } else {
+        errorMsg.textContent = 'Invalid username or password.';
+      }
+    });
+  </script>
 </body>
 </html>
+
