@@ -171,6 +171,31 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
       margin-top: 3px;
     }
 
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 36px 0 38px 0;
+      font-size: 22px;
+    }
+    .pagination span, .pagination a {
+      color: #fff;
+      padding: 6px 13px;
+      background: #252525;
+      border-radius: 10px;
+      margin: 0 4px;
+      cursor: pointer;
+      text-decoration: none;
+      border: 2px solid #00ff66;
+      transition: background 0.24s;
+      font-weight: bold;
+    }
+    .pagination .active, .pagination span.current {
+      background: #00ff66;
+      color: #151515;
+      pointer-events: none;
+    }
+
     </style>
 </head>
 <body>
@@ -216,7 +241,7 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
    <div class="forum-listing">
 
         <div class="question-card">
-        <div class="votes">2</div>
+        <div class="votes">1</div>
         <div>
             <div class="q-tags">
             <span class="q-tag">Mechanical</span>
@@ -229,7 +254,7 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         </div>
 
         <div class="question-card">
-        <div class="votes">21</div>
+        <div class="votes">2</div>
         <div>
             <div class="q-tags">
             <span class="q-tag">Technical</span>
@@ -255,6 +280,14 @@ background: linear-gradient(135deg, #6db0d1 0%, #414345 100%);      color: #fff;
         </div>
     </div>
 
+    <div class="pagination">
+        <span class="current">1</span>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <span>4</span>
+        <span>…</span>
+        <a href="#">11</a>
+    </div>
 
 </body>
 </html>
